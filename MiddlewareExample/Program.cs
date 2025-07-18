@@ -1,3 +1,6 @@
+using MiddlewareExample.Extansions;
+using MiddlewareExample.Extantions;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -16,10 +19,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseHelloMiddleware();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.MapControllers();
+app.UseRequestResponseMiddileware();
 
 app.Run();
